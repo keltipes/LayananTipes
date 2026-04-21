@@ -176,4 +176,48 @@
         <div>
           <span class="chip">Layanan #3</span>
           <h3>Surat Keterangan</h3>
-          <p>SKTM, Domisili, Usaha, Pengantar RT/RW, dan lainnya.</p
+          <p>SKTM, Domisili, Usaha, Pengantar RT/RW, dan lainnya.</p>
+        </div>
+        <a class="btn" href="https://docs.google.com/spreadsheets/d/187KoVJmdxwLqZHRLMahYQef0iaYb5S0NMkUr3mRm6TQ/edit" target="_blank" rel="noopener noreferrer">Buatkan Surat</a>
+      </article>
+
+      <article id="tatanaskah" class="card">
+        <div>
+          <span class="chip">Layanan #4</span>
+          <h3>Tata Naskah</h3>
+          <p>Pembuatan Undangan, Surat Permohonan, Surat Tugas dan Nota Dinas</p>
+        </div>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdsiyqxcKDDlX9l_Fk-lBTRqAGKWBiRae6ADsd_VsrImf89rQ/viewform" target="_blank" rel="noopener noreferrer">Isi G-Form</a>
+      </article>
+    </section>
+
+    <section id="kontak" class="container" style="margin-top:36px;">
+      <div class="card">
+        <h3>Kontak & Informasi</h3>
+        <p>Hubungi petugas layanan untuk bantuan proses berkas.</p>
+        <ul>
+          <li>Email: sek.keltipes@gmail.com</li>
+          <li>Telepon/WA: 0851-7684-4461</li>
+          <li>Alamat: Jl. Cokrobaskoro III, Kelurahan Tipes</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Kelurahan Tipes • Semua hak cipta dilindungi.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Perbaikan dropdown script
+    const dropdown = document.querySelector('.dropdown');
+    const btn = dropdown?.querySelector('button');
+    if (dropdown && btn) {
+      dropdown.addEventListener('mouseenter', () => btn.setAttribute('aria-expanded', 'true'));
+      dropdown.addEventListener('mouseleave', () => btn.setAttribute('aria-expanded', 'false'));
+    }
+  </script>
+</body>
+</html>
