@@ -85,4 +85,95 @@
       background: rgba(255,255,255,.9);
       border: 1px solid rgba(63,122,93,.15);
       border-radius: 18px;
-      padding: 1
+      padding: 18px;
+      box-shadow: var(--bayangan);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h3 { margin: 6px 0 6px; color: var(--hijau-tua); }
+    .chip {
+      display: inline-block; width: fit-content; padding: 6px 10px; background: var(--hijau);
+      border-radius: 999px; font-size: .8rem; font-weight: 700; color: #25533f; margin-bottom: 10px;
+    }
+
+    .btn {
+      display: block; text-align: center; padding: 10px 14px; border-radius: 12px; text-decoration: none;
+      background: var(--hijau-tua); color: var(--putih); font-weight: 700; border: 2px solid var(--hijau-tua);
+      transition: all .2s ease;
+    }
+    .btn:hover { background: #35664d; transform: translateY(-2px); }
+
+    footer { text-align: center; padding: 32px 16px; color: #2f4f40; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-row">
+      <a class="brand" href="#">
+        <div class="logo">LT</div>
+        <div>
+          <h1>Layanan Kelurahan Tipes</h1>
+          <small>Pelayanan administrasi yang mudah, cepat, transparan</small>
+        </div>
+      </a>
+      <nav aria-label="Navigasi utama">
+        <ul class="menu">
+          <li class="dropdown">
+            <button aria-haspopup="true">Layanan ▾</button>
+            <div class="dropdown-menu">
+              <a href="https://docs.google.com/spreadsheets/d/1JSJya5rLeyB-ATow6m8go0M8lNb7waHt86FPruS1m8c/edit" target="_blank" rel="noopener noreferrer">
+                <span class="chip">#1</span>
+                <div><strong>Layanan Dukcapil</strong></div>
+              </a>
+              <a href="https://docs.google.com/spreadsheets/d/1K_xyJ8xKvbN7KYkuaBeANJP9-P4eDwl8d05kfCXo97M/edit" target="_blank" rel="noopener noreferrer">
+                <span class="chip">#2</span>
+                <div><strong>Layanan Nikah</strong></div>
+              </a>
+              <a href="https://docs.google.com/spreadsheets/d/187KoVJmdxwLqZHRLMahYQef0iaYb5S0NMkUr3mRm6TQ/edit" target="_blank" rel="noopener noreferrer">
+                <span class="chip">#3</span>
+                <div><strong>Layanan Surat</strong></div>
+              </a>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsiyqxcKDDlX9l_Fk-lBTRqAGKWBiRae6ADsd_VsrImf89rQ/viewform" target="_blank" rel="noopener noreferrer">
+                <span class="chip">#4</span>
+                <div><strong>Tata Naskah</strong></div>
+              </a>
+            </div>
+          </li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <h2>Selamat datang di Aplikasi Layanan Kelurahan Tipes</h2>
+      <p>Silakan pilih jenis layanan yang akan dikerjakan di bawah ini.</p>
+    </section>
+
+    <section class="container grid">
+      <article id="dukcapil" class="card">
+        <div>
+          <span class="chip">Layanan #1</span>
+          <h3>Layanan Dukcapil</h3>
+          <p>Pembuatan KTP-el, KK, Akta Kelahiran/Kematian, dan lainnya.</p>
+        </div>
+        <a class="btn" href="https://docs.google.com/spreadsheets/d/1JSJya5rLeyB-ATow6m8go0M8lNb7waHt86FPruS1m8c/edit" target="_blank" rel="noopener noreferrer">Kerjakan Pengajuan</a>
+      </article>
+
+      <article id="nikah" class="card">
+        <div>
+          <span class="chip">Layanan #2</span>
+          <h3>Layanan Nikah</h3>
+          <p>Informasi pengantar kelurahan dan alur berkas ke KUA.</p>
+        </div>
+        <a class="btn" href="https://docs.google.com/spreadsheets/d/1K_xyJ8xKvbN7KYkuaBeANJP9-P4eDwl8d05kfCXo97M/edit" target="_blank" rel="noopener noreferrer">Kerjakan Permohonan</a>
+      </article>
+
+      <article id="surat" class="card">
+        <div>
+          <span class="chip">Layanan #3</span>
+          <h3>Surat Keterangan</h3>
+          <p>SKTM, Domisili, Usaha, Pengantar RT/RW, dan lainnya.</p
