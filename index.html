@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pengajuan Layanan</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layanan Kelurahan Tipes</title>
   <style>
     :root {
       --hijau-muda: #dff5e1;
@@ -23,7 +23,7 @@
       background: var(--hijau-muda) no-repeat fixed center/cover url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=60');
       position: relative;
     }
-    /* Lapisan tint hijau muda agar teks lebih terbaca di atas foto */
+    
     body::before {
       content: "";
       position: fixed;
@@ -33,7 +33,6 @@
       z-index: -1;
     }
 
-    /* Header & navigasi */
     header {
       position: sticky;
       top: 0;
@@ -54,7 +53,6 @@
     .brand h1 { font-size: 1.25rem; margin: 0; line-height: 1.1; }
     .brand small { display: block; font-size: .8rem; color: #3f7a5db3; }
 
-    nav { display: flex; align-items: center; gap: 16px; }
     .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 
     .menu { list-style: none; display: flex; margin: 0; padding: 0; gap: 6px; }
@@ -66,10 +64,8 @@
     }
     .menu > li > a:hover, .menu > li > button:hover { background: var(--hijau); }
 
-    /* Dropdown */
-    .dropdown { position: relative; }
     .dropdown-menu {
-      position: absolute; top: 100%; left: 0; min-width: 260px; padding: 10px; margin-top: 6px;
+      position: absolute; top: 100%; left: 0; min-width: 280px; padding: 10px; margin-top: 6px;
       background: var(--putih); border-radius: 16px; box-shadow: var(--bayangan);
       border: 1px solid rgba(63,122,93,.15); display: none;
     }
@@ -80,15 +76,11 @@
     }
     .dropdown-menu a:hover { background: var(--hijau-muda); }
 
-    /* Hero */
     .hero { text-align: center; padding: 64px 16px 28px; }
     .hero h2 { font-size: clamp(1.6rem, 2.5vw + 1rem, 2.4rem); margin: 0 0 10px; color: var(--hijau-tua); }
-    .hero p { margin: 0 auto; max-width: 720px; font-size: 1rem; opacity: .9; }
-
-    /* Section kartu layanan */
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 26px; }
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+    
+    /* Perbaikan Grid agar muat 4 kolom jika layar lebar */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 26px; }
 
     .card {
       background: rgba(255,255,255,.9);
@@ -96,31 +88,31 @@
       border-radius: 18px;
       padding: 18px;
       box-shadow: var(--bayangan);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .card h3 { margin: 6px 0 6px; color: var(--hijau-tua); }
-    .card p { margin: 0 0 12px; }
     .chip {
-      display: inline-block; padding: 6px 10px; background: var(--hijau);
-      border-radius: 999px; font-size: .8rem; font-weight: 700; color: #25533f;
+      display: inline-block; width: fit-content; padding: 6px 10px; background: var(--hijau);
+      border-radius: 999px; font-size: .8rem; font-weight: 700; color: #25533f; margin-bottom: 10px;
     }
 
     .btn {
-      display: inline-block; padding: 10px 14px; border-radius: 12px; text-decoration: none;
+      display: block; text-align: center; padding: 10px 14px; border-radius: 12px; text-decoration: none;
       background: var(--hijau-tua); color: var(--putih); font-weight: 700; border: 2px solid var(--hijau-tua);
-      transition: transform .06s ease, background .2s ease;
+      transition: all .2s ease;
     }
-    .btn:hover { background: #35664d; transform: translateY(-1px); }
-    .btn.ghost { background: transparent; color: var(--hijau-tua); }
-    .btn.ghost:hover { background: var(--hijau); }
+    .btn:hover { background: #35664d; transform: translateY(-2px); }
 
-    /* Footer */
     footer { text-align: center; padding: 32px 16px; color: #2f4f40; }
   </style>
 </head>
 <body>
+
   <header>
     <div class="container nav-row">
-      <a class="brand" href="#top" aria-label="Beranda Layanan Kelurahan Tipes">
+      <a class="brand" href="#">
         <div class="logo">LT</div>
         <div>
           <h1>Layanan Kelurahan Tipes</h1>
@@ -130,28 +122,23 @@
       <nav aria-label="Navigasi utama">
         <ul class="menu">
           <li class="dropdown">
-            <button aria-haspopup="true" aria-expanded="false">Layanan ▾</button>
-            <div class="dropdown-menu" role="menu">
-              <a href="#dukcapil" role="menuitem">
+            <button aria-haspopup="true">Layanan ▾</button>
+            <div class="dropdown-menu">
+              <a href="#dukcapil">
                 <span class="chip">#1</span>
-                <div>
-                  <strong>Layanan Dukcapil</strong>
-                  <div>Pembuatan KTP, KK, Akta Kelahiran, dan lainnya</div>
-                </div>
+                <div><strong>Layanan Dukcapil</strong></div>
               </a>
-              <a href="#nikah" role="menuitem">
+              <a href="#nikah">
                 <span class="chip">#2</span>
-                <div>
-                  <strong>Layanan Nikah</strong>
-                  <div>Informasi persyaratan & pengantar ke KUA</div>
-                </div>
+                <div><strong>Layanan Nikah</strong></div>
               </a>
-              <a href="#surat" role="menuitem">
+              <a href="#surat">
                 <span class="chip">#3</span>
-                <div>
-                  <strong>Layanan Surat Keterangan/Pengantar</strong>
-                  <div>SKTM, Domisili, Usaha, Pengantar RT/RW, dsb.</div>
-                </div>
+                <div><strong>Layanan Surat</strong></div>
+              </a>
+              <a href="LINK_GFORM_ANDA_DISINI" target="_blank">
+                <span class="chip">#4</span>
+                <div><strong>Tata Naskah</strong></div>
               </a>
             </div>
           </li>
@@ -161,50 +148,57 @@
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero container">
-      <h2>Selamat datang di Apikasi Layanan Kelurahan Tipes</h2>
-      <p>
-        Silakan pilih jenis layanan yang akan dikerjakan
-      </p>
+      <h2>Selamat datang di Aplikasi Layanan Kelurahan Tipes</h2>
+      <p>Silakan pilih jenis layanan yang akan dikerjakan di bawah ini.</p>
     </section>
 
-    <section class="container grid" aria-label="Daftar Layanan">
-      <!-- Kartu 1 -->
-      <article id="dukcapil" class="card" aria-labelledby="judul-dukcapil">
-        <span class="chip">Layanan #1</span>
-        <h3 id="judul-dukcapil">Layanan Dukcapil</h3>
-        <p>Pembuatan/Perubahan KTP-el, Kartu Keluarga, Akta Kelahiran/Kematian, dan layanan kependudukan lainnya.</p>
-        <a class="btn" href="https://docs.google.com/spreadsheets/d/1JSJya5rLeyB-ATow6m8go0M8lNb7waHt86FPruS1m8c/edit?gid=303475103#gid=303475103">Kerjakan Pengajuan</a>
-              </article>
-
-      <!-- Kartu 2 -->
-      <article id="nikah" class="card" aria-labelledby="judul-nikah">
-        <span class="chip">Layanan #2</span>
-        <h3 id="judul-nikah">Layanan Nikah</h3>
-        <p>Informasi pengantar dari kelurahan, alur berkas ke KUA, dan daftar persyaratan bagi calon pengantin.</p>
-        <a class="btn" href="https://docs.google.com/spreadsheets/d/1K_xyJ8xKvbN7KYkuaBeANJP9-P4eDwl8d05kfCXo97M/edit?usp=sharing">Kerjakan Permohonan</a>
-        
+    <section class="container grid">
+      <article id="dukcapil" class="card">
+        <div>
+          <span class="chip">Layanan #1</span>
+          <h3>Layanan Dukcapil</h3>
+          <p>Pembuatan KTP-el, KK, Akta Kelahiran/Kematian, dan lainnya.</p>
+        </div>
+        <a class="btn" href="https://docs.google.com/spreadsheets/d/1JSJya5rLeyB-ATow6m8go0M8lNb7waHt86FPruS1m8c/edit">Kerjakan Pengajuan</a>
       </article>
 
-      <!-- Kartu 3 -->
-      <article id="surat" class="card" aria-labelledby="judul-surat">
-        <span class="chip">Layanan #3</span>
-        <h3 id="judul-surat">Layanan Surat Keterangan/Pengantar</h3>
-        <p>SKTM, Domisili, Usaha, Keramaian, Pengantar RT/RW, rekomendasi, dan jenis surat keterangan lainnya.</p>
-        <a class="btn" href="https://docs.google.com/spreadsheets/d/187KoVJmdxwLqZHRLMahYQef0iaYb5S0NMkUr3mRm6TQ/edit?usp=sharing">Buatkan Surat</a>
-        
+      <article id="nikah" class="card">
+        <div>
+          <span class="chip">Layanan #2</span>
+          <h3>Layanan Nikah</h3>
+          <p>Informasi pengantar kelurahan dan alur berkas ke KUA.</p>
+        </div>
+        <a class="btn" href="https://docs.google.com/spreadsheets/d/1K_xyJ8xKvbN7KYkuaBeANJP9-P4eDwl8d05kfCXo97M/edit">Kerjakan Permohonan</a>
+      </article>
+
+      <article id="surat" class="card">
+        <div>
+          <span class="chip">Layanan #3</span>
+          <h3>Surat Keterangan</h3>
+          <p>SKTM, Domisili, Usaha, Pengantar RT/RW, dan lainnya.</p>
+        </div>
+        <a class="btn" href="https://docs.google.com/spreadsheets/d/187KoVJmdxwLqZHRLMahYQef0iaYb5S0NMkUr3mRm6TQ/edit">Buatkan Surat</a>
+      </article>
+
+      <article id="tatanaskah" class="card">
+        <div>
+          <span class="chip">Layanan #4</span>
+          <h3>Tata Naskah</h3>
+          <p>Pembuatan Undangan, Surat Permohonan, Surat Tugas dan Nota Dinas</p>
+        </div>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdsiyqxcKDDlX9l_Fk-lBTRqAGKWBiRae6ADsd_VsrImf89rQ/viewform" target="_blank">Isi G-Form</a>
       </article>
     </section>
 
     <section id="kontak" class="container" style="margin-top:36px;">
       <div class="card">
         <h3>Kontak & Informasi</h3>
-        <p>Silakan hubungi petugas layanan untuk informasi lebih lanjut atau bantuan proses berkas.</p>
+        <p>Hubungi petugas layanan untuk bantuan proses berkas.</p>
         <ul>
-          <li>Email: <a href="mailto:sek.keltipes@gmail.com">sek.keltipes@gmail.com</a></li>
+          <li>Email: sek.keltipes@gmail.com</li>
           <li>Telepon/WA: 0851-7684-4461</li>
-          <li>Jam Layanan: Senin–Kamis = 08.00–16.00 WIB, Jumat = 08.00-14.00 WIB</li>
           <li>Alamat: Jl. Cokrobaskoro III, Kelurahan Tipes</li>
         </ul>
       </div>
@@ -216,16 +210,7 @@
   </footer>
 
   <script>
-    // Update tahun otomatis
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Aksesibilitas: ubah aria-expanded pada hover/blur di dropdown
-    const dropdown = document.querySelector('.dropdown');
-    const btn = dropdown?.querySelector('button');
-    if (dropdown && btn) {
-      dropdown.addEventListener('mouseenter', () => btn.setAttribute('aria-expanded', 'true'));
-      dropdown.addEventListener('mouseleave', () => btn.setAttribute('aria-expanded', 'false'));
-    }
   </script>
 </body>
 </html>
