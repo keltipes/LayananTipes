@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 1. Penyesuaian Title Browser -->
   <title>ASIK TIPES - Aplikasi Sekali Klik Kelurahan Tipes</title>
   <style>
     :root {
@@ -21,7 +20,6 @@
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color: var(--teks-gelap);
-      /* Latar belakang diperbarui menggunakan link dari ImgBB */
       background: var(--hijau-muda) no-repeat fixed center/cover url('https://i.ibb.co.com/jkDTLMbG/Sketsa.png');
       position: relative;
     }
@@ -43,7 +41,7 @@
       background: rgba(255,255,255,.6);
       border-bottom: 1px solid rgba(63,122,93,.15);
     }
-    .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 16px; }
 
     .brand {
       display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--teks-gelap);
@@ -81,7 +79,27 @@
     .hero { text-align: center; padding: 64px 16px 28px; }
     .hero h2 { font-size: clamp(1.6rem, 2.5vw + 1rem, 2.4rem); margin: 0 0 10px; color: var(--hijau-tua); }
     
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 26px; }
+    /* SETTING GRID: 4 KOLOM X 2 BARIS */
+    .grid { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 16px; 
+      margin-top: 26px; 
+    }
+
+    /* Penyesuaian Tablet */
+    @media (max-width: 992px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Penyesuaian HP */
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .card {
       background: rgba(255,255,255,.9);
@@ -93,8 +111,8 @@
       flex-direction: column;
       justify-content: space-between;
     }
-    .card h3 { margin: 6px 0 6px; color: var(--hijau-tua); }
-    .card p { margin-bottom: 15px; flex-grow: 1; }
+    .card h3 { margin: 6px 0 6px; color: var(--hijau-tua); font-size: 1.1rem; }
+    .card p { margin-bottom: 15px; flex-grow: 1; font-size: 0.9rem; }
     .chip {
       display: inline-block; width: fit-content; padding: 6px 10px; background: var(--hijau);
       border-radius: 999px; font-size: .8rem; font-weight: 700; color: #25533f; margin-bottom: 10px;
@@ -104,6 +122,7 @@
       display: block; text-align: center; padding: 10px 14px; border-radius: 12px; text-decoration: none;
       background: var(--hijau-tua); color: var(--putih); font-weight: 700; border: 2px solid var(--hijau-tua);
       transition: all .2s ease;
+      font-size: 0.9rem;
     }
     .btn:hover { background: #35664d; transform: translateY(-2px); }
 
@@ -172,7 +191,9 @@
       <p>Silakan pilih jenis layanan yang akan dikerjakan di bawah ini.</p>
     </section>
 
+    <!-- SUSUNAN 4 KOLOM X 2 BARIS -->
     <section class="container grid">
+      <!-- BARIS 1 (Kartu 1-4) -->
       <article id="dukcapil" class="card">
         <div>
           <span class="chip">Pen-Capil</span>
@@ -209,6 +230,7 @@
         <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdsiyqxcKDDlX9l_Fk-lBTRqAGKWBiRae6ADsd_VsrImf89rQ/viewform" target="_blank" rel="noopener noreferrer">Isi G-Form</a>
       </article>
 
+      <!-- BARIS 2 (Kartu 5-8) -->
       <article id="updatedesil" class="card">
         <div>
           <span class="chip">Pensil Tipes</span>
