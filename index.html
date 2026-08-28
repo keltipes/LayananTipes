@@ -15,7 +15,7 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html, body { height: 100%; scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -60,7 +60,7 @@
     .menu > li > a, .menu > li > button {
       appearance: none; border: 0; background: transparent; cursor: pointer;
       padding: 10px 14px; border-radius: 999px; font-weight: 600; text-decoration: none;
-      color: var(--teks-gelap);
+      color: var(--teks-gelap); font-size: 1rem;
     }
     .menu > li > a:hover, .menu > li > button:hover { background: var(--hijau); }
 
@@ -69,7 +69,8 @@
       background: var(--putih); border-radius: 16px; box-shadow: var(--bayangan);
       border: 1px solid rgba(63,122,93,.15); display: none;
     }
-    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown:hover .dropdown-menu,
+    .dropdown.show .dropdown-menu { display: block; }
     .dropdown-menu a {
       display: flex; gap: 10px; align-items: start; text-decoration: none; color: inherit;
       padding: 10px 12px; border-radius: 12px;
@@ -110,6 +111,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(0,0,0,.12);
     }
     .card h3 { margin: 6px 0 6px; color: var(--hijau-tua); font-size: 1.1rem; }
     .card p { margin-bottom: 15px; flex-grow: 1; font-size: 0.9rem; }
@@ -125,6 +131,23 @@
       font-size: 0.9rem;
     }
     .btn:hover { background: #35664d; transform: translateY(-2px); }
+
+    /* Layout Tombol Ganda */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    @media (min-width: 480px) {
+      .btn-group {
+        flex-direction: row;
+      }
+      .btn-group .btn {
+        flex: 1;
+        padding: 10px 6px;
+        font-size: 0.82rem;
+      }
+    }
 
     footer { text-align: center; padding: 32px 16px; color: #2f4f40; }
   </style>
@@ -143,8 +166,8 @@
       <nav aria-label="Navigasi utama">
         <ul class="menu">
           <li class="dropdown">
-            <button aria-haspopup="true">Layanan ▾</button>
-            <div class="dropdown-menu">
+            <button id="btn-dropdown" aria-haspopup="true" aria-expanded="false">Layanan ▾</button>
+            <div class="dropdown-menu" role="menu">
               <a href="https://docs.google.com/spreadsheets/d/1JSJya5rLeyB-ATow6m8go0M8lNb7waHt86FPruS1m8c/edit" target="_blank" rel="noopener noreferrer">
                 <span class="chip">#1</span>
                 <div><strong>Layanan Dukcapil</strong></div>
@@ -162,8 +185,12 @@
                 <div><strong>Tata Naskah</strong></div>
               </a>
               <a href="https://docs.google.com/spreadsheets/d/1zQS6QcSOVm9zaFjkDa9-byHYWU8Gk7MmzILDV9AseWM/edit?resourcekey=&gid=113311124#gid=113311124" target="_blank" rel="noopener noreferrer">
-                <span class="chip">#5</span>
+                <span class="chip">#5a</span>
                 <div><strong>Update Desil</strong></div>
+              </a>
+              <a href="https://docs.google.com/spreadsheets/d/1-11G-uoY_MQZN0I96zUoveehAgxlgkzsAdmLjzfV8J4/edit?resourcekey=&gid=1068477991#gid=1068477991" target="_blank" rel="noopener noreferrer">
+                <span class="chip">#5b</span>
+                <div><strong>Klarifikasi Bansos</strong></div>
               </a>
               <a href="https://docs.google.com/spreadsheets/d/1-zmLtMKf5rMglemzO4BUl4HZ7eLomqE56bYyygObS2U/edit?resourcekey=&gid=1427941239#gid=1427941239" target="_blank" rel="noopener noreferrer">
                 <span class="chip">#6</span>
@@ -234,17 +261,20 @@
       <article id="updatedesil" class="card">
         <div>
           <span class="chip">Pensil Tipes</span>
-          <h3>Perubahan Desil Warga Tipes</h3>
-          <p>Pembaruan data desil untuk pendataan kesejahteraan warga.</p>
+          <h3>Perubahan Desil &amp; Bansos Warga Tipes</h3>
+          <p>Pembaruan data desil dan klarifikasi bansos untuk pendataan kesejahteraan warga.</p>
         </div>
-        <a class="btn" href="https://docs.google.com/spreadsheets/d/1zQS6QcSOVm9zaFjkDa9-byHYWU8Gk7MmzILDV9AseWM/edit?resourcekey=&gid=113311124#gid=113311124" target="_blank" rel="noopener noreferrer">Update Data</a>
+        <div class="btn-group">
+          <a class="btn" href="https://docs.google.com/spreadsheets/d/1zQS6QcSOVm9zaFjkDa9-byHYWU8Gk7MmzILDV9AseWM/edit?resourcekey=&gid=113311124#gid=113311124" target="_blank" rel="noopener noreferrer">Update Data</a>
+          <a class="btn" href="https://docs.google.com/spreadsheets/d/1-11G-uoY_MQZN0I96zUoveehAgxlgkzsAdmLjzfV8J4/edit?resourcekey=&gid=1068477991#gid=1068477991" target="_blank" rel="noopener noreferrer">Klarifikasi Bansos</a>
+        </div>
       </article>
 
       <article id="sappa" class="card">
         <div>
           <span class="chip">SAPA TEMAN TIPES</span>
           <h3>SAPPA TEMAN</h3>
-          <p>Sahabat Perlindungan Perempuan & Anak Tipes, Aman Nyaman (Monitoring Pelaporan Kekerasan).</p>
+          <p>Sahabat Perlindungan Perempuan &amp; Anak Tipes, Aman Nyaman (Monitoring Pelaporan Kekerasan).</p>
         </div>
         <a class="btn" href="https://docs.google.com/spreadsheets/d/1-zmLtMKf5rMglemzO4BUl4HZ7eLomqE56bYyygObS2U/edit?resourcekey=&gid=1427941239#gid=1427941239" target="_blank" rel="noopener noreferrer">Pantau Laporan</a>
       </article>
@@ -270,7 +300,7 @@
 
     <section id="kontak" class="container" style="margin-top:36px;">
       <div class="card">
-        <h3>Kontak & Informasi</h3>
+        <h3>Kontak &amp; Informasi</h3>
         <p>Hubungi petugas layanan untuk bantuan proses berkas.</p>
         <ul>
           <li>Email: sek.keltipes@gmail.com</li>
@@ -289,10 +319,21 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     
     const dropdown = document.querySelector('.dropdown');
-    const btn = dropdown?.querySelector('button');
+    const btn = document.getElementById('btn-dropdown');
+    
     if (dropdown && btn) {
-      dropdown.addEventListener('mouseenter', () => btn.setAttribute('aria-expanded', 'true'));
-      dropdown.addEventListener('mouseleave', () => btn.setAttribute('aria-expanded', 'false'));
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = dropdown.classList.toggle('show');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('show');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
     }
   </script>
 </body>
